@@ -7,14 +7,12 @@ public class Demo {
     public static String read(String path) {
         StringBuilder stringBuilder;
         stringBuilder = new StringBuilder();
-        try{
-            BufferedReader reader = new BufferedReader(new FileReader(path));
+        try(BufferedReader reader = new BufferedReader(new FileReader(path))){
             String currentString;
             while ((currentString = reader.readLine()) != null) {
                 stringBuilder.append(currentString);
                 stringBuilder.append(" \n ");
             }
-            reader.close();
         } catch (FileNotFoundException e) {
             System.out.println("FileNotFoundException " + e.getMessage());
         } catch (IOException e) {
